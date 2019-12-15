@@ -16,7 +16,7 @@ Create Users:
         Body: (x-www-form-urlencoded)
             email: john@gmail.com
             password: john
-            role: basic
+            role: customer
 
     Create an admin:
 

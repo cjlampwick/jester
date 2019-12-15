@@ -17,7 +17,7 @@ exports.signup = async (req, res, next) => {
     try {
         const { email, password, role } = req.body
         const hashedPassword = await hashPassword(password);
-        const newUser = new User({ email, password: hashedPassword, role: role || "basic" });
+        const newUser = new User({ email, password: hashedPassword, role: role || "customer" });
         const accessToken = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, {
             expiresIn: "1d"
         });
@@ -76,12 +76,16 @@ exports.updateUser = async (req, res, next) => {
     try {
         const update = req.body
         const userId = req.params.userId;
-        await User.findByIdAndUpdate(userId, update);
+        
+        await User.findOneAndUpdate( {_id : req.params.userId}, update);
+
         const user = await User.findById(userId)
+
         res.status(200).json({
             data: user,
             message: 'User has been updated'
         });
+
     } catch (error) {
         next(error)
     }
