@@ -13,10 +13,10 @@ require("dotenv").config({
 
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
 mongoose
-    .connect('mongodb://localhost:27017/rbac')
+    .connect('mongodb://localhost:' + process.env.DB_PORT + '/rbac')
     .then(() => {
         console.log('Connected to the Database successfully');
     });
