@@ -12,7 +12,6 @@ require("dotenv").config({
 });
 
 const app = express();
-
 const PORT = process.env.PORT;
 
 mongoose
@@ -37,6 +36,10 @@ app.use(async (req, res, next) => {
     }
 });
 
-app.use('/', routes); app.listen(PORT, () => {
+app.use(express.static('public'));
+
+app.use('/', routes);
+
+app.listen(PORT, () => {
     console.log('Server is listening on Port:', PORT)
 })
