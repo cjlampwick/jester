@@ -31,6 +31,9 @@ mongoose
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/login', loginRouter);
+
 app.use(async (req, res, next) => {
     var cookies = new Cookies(req, res)
     var accessToken = cookies.get('accessToken');
@@ -41,7 +44,9 @@ app.use(async (req, res, next) => {
         if (exp < Date.now().valueOf() / 1000) {
             return res.status(401).json({ error: "JWT token has expired, please login to obtain a new one" });
         }
-        res.locals.loggedInUser = await User.findById(userId); next();
+
+        res.locals.loggedInUser = await User.findById(userId); 
+        next();
     } else {
         next();
     }
@@ -50,9 +55,7 @@ app.use(async (req, res, next) => {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(express.static(path.join(__dirname, 'public')));
 app.use('/users', userRouter);
-app.use('/login', loginRouter);
 app.use('/', indexRouter);
 
 app.listen(PORT, () => {

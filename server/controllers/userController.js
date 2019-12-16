@@ -45,22 +45,30 @@ exports.login = async (req, res, next) => {
         if (!validPassword) return next(new Error('Password is not correct'))
 
         const accessToken = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-            expiresIn: "1d"
+            expiresIn: '2 days'
         });
 
         await User.findByIdAndUpdate(user._id, { accessToken })
 
-        // res.cookie('accessToken', accessToken, { maxAge: 86400 });
         var cookies = new Cookies(req, res)
-        cookies.set('user', user);
         cookies.set('accessToken', accessToken);
 
         res.status(200)
             .render('index', { title: 'Index Page' })
-            
+
     } catch (error) {
         next(error);
     }
+}
+
+exports.logout = async (req, res, next) => {
+    var cookies = new Cookies(req, res)
+    
+    var accessToken = cookies.get('accessToken');
+    cookies.set('accessToken', accessToken, { expires: new Date()});
+
+    res.status(200)
+        .render('login')
 }
 
 exports.getUsers = async (req, res, next) => {

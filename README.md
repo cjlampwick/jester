@@ -11,7 +11,7 @@ Create Users:
     Create basic user:
 
         Post to:
-            localhost:3000/signup
+            localhost:3000/login/signup
 
         Body: (x-www-form-urlencoded)
             email: john@gmail.com
@@ -21,7 +21,7 @@ Create Users:
     Create an admin:
 
         Post to:
-            localhost:3000/signup
+            localhost:3000/login/signup
 
         Body: (x-www-form-urlencoded)
             email: admin@example.com
@@ -30,6 +30,4 @@ Create Users:
 
 List users:
 
-    Get on Postman:
-        
-        Headers: x-access-token = {token received in sign up response}
+    http://127.0.0.1/users
