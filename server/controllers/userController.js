@@ -54,7 +54,7 @@ exports.login = async (req, res, next) => {
         cookies.set('accessToken', accessToken);
 
         res.status(200)
-            .render('index', { title: 'Index Page' })
+            .redirect('../')
 
     } catch (error) {
         next(error);
@@ -68,7 +68,7 @@ exports.logout = async (req, res, next) => {
     cookies.set('accessToken', accessToken, { expires: new Date()});
 
     res.status(200)
-        .render('login')
+        .redirect('../login')
 }
 
 exports.getUsers = async (req, res, next) => {
@@ -143,9 +143,8 @@ exports.allowIfLoggedin = async (req, res, next) => {
     try {
         const user = res.locals.loggedInUser;
         if (!user)
-            return res.status(401).json({
-                error: "You need to be logged in to access this route"
-            });
+            return res.status(401).redirect('../login');
+            
         req.user = user;
         next();
     } catch (error) {
