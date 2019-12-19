@@ -1,5 +1,9 @@
 Install:
 
+    > npm install
+
+Run:
+
     > node server/server.js
 
 Run MongooDB:
