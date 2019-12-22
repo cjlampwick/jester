@@ -22,6 +22,12 @@ const UserSchema = new Schema({
     }
 });
 
+UserSchema.virtual('groups', {
+    ref: 'group',
+    localField: '_id',
+    foreignField: 'users'
+});
+
 const User = mongoose.model('user', UserSchema);
 
 module.exports = User;
