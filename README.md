@@ -35,3 +35,7 @@ Create Users:
 List users:
 
     http://127.0.0.1/users
+
+Icons from:
+
+    https://www.iconfinder.com/iconsets/multimedia-75
