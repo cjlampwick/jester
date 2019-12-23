@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <header>
-      <%- include('partials/header'); -%>
-    </header>
-    <div class="index-container">
-      <div class="index-sidebar">
-          <%- include('partials/sidebar'); -%>
-      </div>
-      <div class="index-content">
-        
-      </div>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <header>
+    <%- include('partials/header'); -%>
+  </header>
+  <div class="index-container">
+    <div class="index-sidebar">
+      <%- include('partials/sidebar'); -%>
     </div>
-  </body>
+    <div class="index-content">
+      <%- include(view); -%>
+    </div>
+  </div>
+</body>
+
 </html>
