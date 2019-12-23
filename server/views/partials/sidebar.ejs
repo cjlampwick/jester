@@ -1,0 +1,17 @@
+<div class="sidebar-container">
+    <div class="sidebar-item<%if (view==="dashboard") { %>-selected<% } %>">
+        <a href="/dashboard">
+            <img title="Home" src="/images/home.png">
+        </a>
+    </div>
+    <div class="sidebar-item<%if (view==="messages") { %>-selected<% } %>">
+        <a href="/messages">
+            <img title="Messages" src="/images/messages.png">
+        </a>
+    </div>
+    <div class="sidebar-item<%if (view==="config") { %>-selected<% } %>">
+        <a href="/config">
+            <img title="Configuration" src="/images/cfg.png">
+        </a>
+    </div>
+</div>
