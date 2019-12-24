@@ -23,6 +23,62 @@ a {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+#internal-modal-form {
+	padding: 0px;
+  font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+#internal-modal-form label{
+	margin:0 0 3px 0;
+	padding:0px;
+	display:block;
+  font-weight: bold;
+  text-align: left;
+}
+
+#internal-modal-form li{
+  padding: 0;
+	display: block;
+  list-style: none;
+  margin: 10px 0 0 0;
+}
+
+#internal-modal-form input:focus{
+	border: 1px solid rgb(121, 7, 121);
+}
+
+#internal-modal-form input{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border:1px solid #BEBEBE;
+	padding: 7px;
+	margin:0px;
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	-o-transition: all 0.30s ease-in-out;
+  outline: none;	
+  width: 100%;
+}
+
+#internal-modal-form button{
+  background: rgb(160, 10, 160);
+	padding: 8px 15px 8px 15px;
+	border: none;
+  color: #fff;
+  margin-top: 10px;
+}
+
+#internal-modal-form button:hover{
+	background: rgb(160, 10, 160);
+	box-shadow:none;
+	-moz-box-shadow:none;
+	-webkit-box-shadow:none;
+}
+
 .internal-header-action{
   height: 25px;
   width: 30px;
@@ -169,4 +225,8 @@ a {
   width: 100%;
   -webkit-filter: opacity(.5) drop-shadow(0 0 0 #CCC);
   filter: opacity(.5) drop-shadow(0 0 0 #CCC);
+}
+
+.error-text{
+  color: rgb(172, 2, 2);
 }

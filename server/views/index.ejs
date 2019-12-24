@@ -3,7 +3,13 @@
 
 <head>
   <title><%= title %></title>
+  <script type="text/javascript" src="javascripts/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="javascripts/main.js"></script>
+  <script type="text/javascript" src="javascripts/jquery.modal.min.js"></script>
+
   <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel="stylesheet" href="/stylesheets/jquery.modal.min.css" />
+
 </head>
 
 <body>
@@ -15,6 +21,8 @@
       <%- include('partials/sidebar'); -%>
     </div>
     <div class="index-content">
+      <div id="modal-form" class="modal">
+      </div>
       <%- include(view); -%>
     </div>
   </div>
