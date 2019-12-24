@@ -1,5 +1,9 @@
 const Group = require('../models/groupModel');
 
+let data = {
+    actions: []
+};
+
 exports.newGroup = async (req, res, next) => {
     try {
         const { name, iconUrl } = req.body
@@ -35,9 +39,23 @@ exports.removeGroup = async (req, res, next) => {
 exports.getGroups = async (req, res, next) => {
     try {
         const groups = await Group.find({});
-        res.status(200).json({
-            data: groups
+
+        data.actions = [
+            {
+                name: "Add",
+                icon: "add",
+                modal: "newGroup"
+            }
+        ]
+
+        res.status(200).render('index', {
+            title: 'Groups',
+            view: 'groups',
+            data,
+            groups
         });
+
+        next();
     } catch (error) {
         next(error)
     }
@@ -47,7 +65,7 @@ exports.getGroup = async (req, res, next) => {
     try {
         const group = await Group.findById(req.params.groupId);
 
-        if(!group)
+        if (!group)
             return res.status(404).json({
                 message: "Group not found"
             })

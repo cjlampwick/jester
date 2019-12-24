@@ -57,11 +57,18 @@ router.get('/customers', userController.allowIfLoggedin, function (req, res, nex
   });
 });
 
-router.get('/groups', userController.allowIfLoggedin, function (req, res, next) {
-  res.render('index', {
-    title: 'Groups',
-    view: 'groups',
-    data
-  });
-});
+router.get(
+  '/groups',
+  userController.allowIfLoggedin,
+  groupController.getGroups
+);
+
+router.get('/groups/getModal',userController.allowIfLoggedin,
+  function (req, res, next) {
+    res.render('modals/groups/'+req.query.modal);
+  }
+);
+
+router.post('/groups/add', userController.allowIfLoggedin, groupController.newGroup);
+
 module.exports = router;
