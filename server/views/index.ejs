@@ -23,7 +23,10 @@
     <div class="index-content">
       <div id="modal-form" class="modal">
       </div>
-      <%- include(view); -%>
+      <%- include('partials/internalHeader') -%>
+      <div class="index-view">
+        <%- include(view); -%>
+      </div>
     </div>
   </div>
 </body>
