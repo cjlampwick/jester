@@ -49,13 +49,11 @@ router.get('/agents', userController.allowIfLoggedin, function (req, res, next) 
   });
 });
 
-router.get('/customers', userController.allowIfLoggedin, function (req, res, next) {
-  res.render('index', {
-    title: 'Customers',
-    view: 'customers',
-    data
-  });
-});
+router.get(
+  '/customers', 
+  userController.allowIfLoggedin,
+  userController.getCustomers
+);
 
 router.get(
   '/groups',

@@ -15,9 +15,14 @@ async function validatePassword(plainPassword, hashedPassword) {
 
 exports.signup = async (req, res, next) => {
     try {
-        const { email, password, role } = req.body
+        const { email, password, role, name } = req.body
         const hashedPassword = await hashPassword(password);
-        const newUser = new User({ email, password: hashedPassword, role: role || "customer" });
+        const newUser = new User({ 
+            email, 
+            password: hashedPassword, 
+            role: role || "customer",
+            name
+        });
         const accessToken = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, {
             expiresIn: "1d"
         });
@@ -78,6 +83,37 @@ exports.getUsers = async (req, res, next) => {
     });
 }
 
+exports.getCustomers = async (req, res, next) => {
+    try{
+        const customers = await User.find({
+            role: "customer"
+        });
+
+        let data = {} ;
+
+        data.actions = [
+            {
+                name: "Add",
+                icon: "add",
+                modal: "newCustomer"
+            }
+        ]
+
+        res.status(200).render('index', {
+            title: 'Customers',
+            view: 'customers',
+            data,
+            customers
+        });
+
+        console.log(customers);
+
+        next();
+    } catch(error){
+        next(error)
+    }
+}
+
 exports.getUser = async (req, res, next) => {
     try {
         const userId = req.params.userId;
@@ -96,9 +132,11 @@ exports.updateUser = async (req, res, next) => {
         const update = req.body
         const userId = req.params.userId;
 
-        await User.findOneAndUpdate({ _id: req.params.userId }, update);
+        const filter = { _id: req.params.userId };
 
-        const user = await User.findById(userId)
+        await User.findOneAndUpdate(filter, update);
+
+        const user = await User.findById(userId);        
 
         res.status(200).json({
             data: user,

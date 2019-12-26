@@ -243,10 +243,6 @@ a {
   flex-wrap: wrap;
 }
 
-.card-item:hover{
-  border: 1px solid #AAA;
-}
-
 .card-item{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   width: 200px;
@@ -260,7 +256,8 @@ a {
 }
 
 .card-item:hover{
-  box-shadow: 2px 2px 3px #AAA;
+  box-shadow: 2px 2px 3px #BBB;
+  border: 1px solid #BBB;
 }
 
 .card-header{
@@ -275,8 +272,18 @@ a {
   font-weight: 540;
 }
 
+.card-header-icon img{
+  width: 100%;
+  -webkit-filter: opacity(.5) drop-shadow(0 0 0 #CCC);
+  filter: opacity(.5) drop-shadow(0 0 0 #CCC);
+  
+}
 .card-header-icon{
   float: right;
+  width: 27px;
+  height: 27px;
+  border-radius: 100%;
+  border: 1px solid #AAA;
 }
 
 .card-body-container{
