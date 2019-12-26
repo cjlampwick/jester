@@ -6,17 +6,21 @@
                 <%= groups[i].name %>
             </div>
             <div class="card-header-icon">
-                <%= groups[i].iconUrl %>
+                <% if (!groups[i].iconUrl) { %>
+                    <img src="/images/groups/default.png">
+                <% } else { %>
+                    <img src="/images/groups/<%=groups[i].iconUrl%>">
+                <% }%>
             </div>
         </div>
         <div class="card-body-container">
             Members: <%= groups[i].users.length %>
         </div>
         <div class="card-body-actions" id="card-actions-<%=i%>">
-            <div class="card-body-action">
+            <div title="Edit" class="card-body-action">
                 <img src="/images/edit.png">
             </div>
-            <div class="card-body-action">
+            <div title="Delete" class="card-body-action">
                 <img src="/images/delete.png">
             </div>
         </div>
