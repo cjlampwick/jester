@@ -94,6 +94,7 @@ a {
   font-size: 1.3em;
   line-height: 1.5em;
   vertical-align: middle;
+  font-weight: bold;
 }
 
 .header-wrapper{
@@ -140,16 +141,6 @@ a {
   margin-left: -6px;
 }
 
-/* .index-container{
-  margin: 10px;
-  background-color: white;
-  border: 1px solid #CCC;
-  border-radius: 5px;
-  padding: 10px;
-  height: calc(100vh - 110px);
-  overflow-y: scroll;
-} */
-
 .index-container{
   display: flex;
   flex-direction: row;
@@ -165,7 +156,12 @@ a {
   padding: 10px;
   height: calc(100vh - 100px);
   overflow-y: clip;
-  box-shadow: 0px 0px 2px 1px #CCC;
+  box-shadow: 0px 0px 4px 1px #CCC;
+}
+
+.index-view{
+  height: calc(100% - 45px);
+  overflow-y: auto;
 }
 
 .index-sidebar {
@@ -177,7 +173,7 @@ a {
   padding: 0px 10px 10px 9px;
   height: calc(100vh - 90px);
   margin-top: 10px;
-  box-shadow: 0px 0px 2px 1px #CCC;
+  box-shadow: 0px 0px 4px 1px #CCC;
 }
 
 .sidebar-container{
@@ -229,4 +225,89 @@ a {
 
 .error-text{
   color: rgb(172, 2, 2);
+}
+
+/* Cards */
+.card-container{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.card-item:hover{
+  border: 1px solid #AAA;
+}
+
+.card-item{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 200px;
+  height: 190px;
+  border: 1px solid #DADADA;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 3px #CCC;
+  cursor: default;
+}
+
+.card-item:hover{
+  box-shadow: 2px 2px 3px #AAA;
+}
+
+.card-header{
+  width: 100%;
+  height: 35px;
+  border-bottom: 1px solid #DADADA;
+  line-height: 30px;
+}
+
+.card-header-title{
+  float: left;
+  font-weight: 540;
+}
+
+.card-header-icon{
+  float: right;
+}
+
+.card-body-container{
+  height: 100px;
+  text-align: left;
+  margin: 10px 0px 10px 0px;
+  color: #777;
+}
+
+.card-body-actions{
+  display: flex;
+  padding:5px;
+  margin-left: -10px;
+}
+
+.card-body-action:hover{
+  border: 1px solid #AAA;
+}
+
+.card-body-action{
+  margin-left: 10px;
+  flex: 1 1 0px;
+  text-align: center;
+  padding-top: 2px;
+  border: 1px solid #CCC;
+  cursor: pointer;
+  display: none;
+}
+
+.card-body-action img{
+  height: 20px;
+  -webkit-filter: opacity(.5) drop-shadow(0 0 0 #CCC);
+  filter: opacity(.5) drop-shadow(0 0 0 #CCC);
 }
