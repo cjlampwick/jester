@@ -13,9 +13,12 @@ exports.newGroup = async (req, res, next) => {
 
         const groups = await Group.find({});
 
-        res.status(200).render('groups', {
+        let data = {
+            view: 'groups',
             groups
-        });
+        };
+
+        res.status(200).render('groups', data);
 
     } catch (error) {
         next(error)
@@ -30,7 +33,7 @@ exports.removeGroup = async (req, res, next) => {
 
         const groups = await Group.find({});
 
-        let data={
+        let data = {
             view: 'groups',
             groups
         };
