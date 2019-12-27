@@ -106,7 +106,34 @@ exports.getCustomers = async (req, res, next) => {
             customers
         });
 
-        console.log(customers);
+        next();
+    } catch(error){
+        next(error)
+    }
+}
+
+exports.getAgents = async (req, res, next) => {
+    try{
+        const agents = await User.find({
+            role: "agent"
+        });
+
+        let data = {} ;
+
+        data.actions = [
+            {
+                name: "Add",
+                icon: "add",
+                modal: "newAgent"
+            }
+        ]
+
+        res.status(200).render('index', {
+            title: 'Agents',
+            view: 'agents',
+            data,
+            agents
+        });
 
         next();
     } catch(error){

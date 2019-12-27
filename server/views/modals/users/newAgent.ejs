@@ -1,0 +1,42 @@
+<h1>New Agent</h1>
+<hr>
+<ul id="internal-modal-form">
+    <li>
+        <label>Name:</label>
+        <input id="newAgentName" type="text" name="name" label="Agent Name" />
+    </li>
+    <li>
+        <label>Email:</label>
+        <input id="newAgentEmail" type="text" name="email" label="Agent Email" />
+    </li>
+    <li>
+        <label>Password:</label>
+        <input id="newAgentPassword" type="password" name="icon" label="Agent Password" />
+    </li>
+    <li>
+        <div id="newAgentError" class="error-text"></div>
+    </li>
+    <li>
+        <button id="saveNewAgent">Save</button>
+    </li>
+    
+</ul>
+
+<script>
+    $('#saveNewAgent').click(function () {
+        $.post('/users/new', {
+            name: $('#newAgentName').val(),
+            email: $('#newAgentEmail').val(),
+            password: $('#newAgentPassword').val(),
+            role: 'agent',
+        }).done(
+            function () {
+                $.modal.close();
+            }
+        ).fail(
+            function (hxr, status, error) {
+                $('#newAgentError').html(error);
+            }
+        );
+    })
+</script>

@@ -1,0 +1,42 @@
+<h1>New Customer</h1>
+<hr>
+<ul id="internal-modal-form">
+    <li>
+        <label>Name:</label>
+        <input id="newCustomerName" type="text" name="name" label="Customer Name" />
+    </li>
+    <li>
+        <label>Email:</label>
+        <input id="newCustomerEmail" type="text" name="email" label="Customer Email" />
+    </li>
+    <li>
+        <label>Password:</label>
+        <input id="newCustomerPassword" type="password" name="icon" label="Customer Password" />
+    </li>
+    <li>
+        <div id="newCustomerError" class="error-text"></div>
+    </li>
+    <li>
+        <button id="saveNewCustomer">Save</button>
+    </li>
+    
+</ul>
+
+<script>
+    $('#saveNewCustomer').click(function () {
+        $.post('/users/new', {
+            name: $('#newCustomerName').val(),
+            email: $('#newCustomerEmail').val(),
+            password: $('#newCustomerPassword').val(),
+            role: 'customer',
+        }).done(
+            function () {
+                $.modal.close();
+            }
+        ).fail(
+            function (hxr, status, error) {
+                $('#newCustomerError').html(error);
+            }
+        );
+    })
+</script>

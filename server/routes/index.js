@@ -41,13 +41,11 @@ router.get('/dashboard', userController.allowIfLoggedin, function (req, res, nex
   });
 });
 
-router.get('/agents', userController.allowIfLoggedin, function (req, res, next) {
-  res.render('index', {
-    title: 'Agents',
-    view: 'agents',
-    data
-  });
-});
+router.get(
+  '/agents', 
+  userController.allowIfLoggedin, 
+  userController.getAgents
+);
 
 router.get(
   '/customers', 
@@ -64,6 +62,18 @@ router.get(
 router.get('/groups/getModal',userController.allowIfLoggedin,
   function (req, res, next) {
     res.render('modals/groups/'+req.query.modal);
+  }
+);
+
+router.get('/customers/getModal',userController.allowIfLoggedin,
+  function (req, res, next) {
+    res.render('modals/users/'+req.query.modal);
+  }
+);
+
+router.get('/agents/getModal',userController.allowIfLoggedin,
+  function (req, res, next) {
+    res.render('modals/users/'+req.query.modal);
   }
 );
 
