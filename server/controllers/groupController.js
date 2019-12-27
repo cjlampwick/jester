@@ -80,3 +80,18 @@ exports.getGroup = async (req, res, next) => {
         next(error)
     }
 }
+
+exports.getGroup = async (groupId) => {
+    try {
+        const group = await Group.findById(groupId);
+
+        if (!group)
+            return res.status(404).json({
+                message: "Group not found"
+            })
+
+        return group;
+    } catch (error) {
+        next(error)
+    }
+}

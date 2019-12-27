@@ -60,20 +60,41 @@ router.get(
 );
 
 router.get('/groups/getModal',userController.allowIfLoggedin,
-  function (req, res, next) {
-    res.render('modals/groups/'+req.query.modal);
+  async function (req, res, next) {
+    let data = {};
+
+    if(req.query.id){
+      const group = await groupController.getGroup(req.query.id)
+      data.group = group;
+    }
+
+    res.render('modals/groups/'+req.query.modal, data);
   }
 );
 
 router.get('/customers/getModal',userController.allowIfLoggedin,
-  function (req, res, next) {
-    res.render('modals/users/'+req.query.modal);
+  async function (req, res, next) {
+    let data = {};
+
+    if(req.query.id){
+      const user = await userController.getUser(req.query.id)
+      data.user = user;
+    }
+
+    res.render('modals/users/'+req.query.modal, data);
   }
 );
 
 router.get('/agents/getModal',userController.allowIfLoggedin,
-  function (req, res, next) {
-    res.render('modals/users/'+req.query.modal);
+  async function (req, res, next) {
+    let data = {};
+
+    if(req.query.id){
+      const user = await userController.getUser(req.query.id)
+      data.user = user;
+    }
+    
+    res.render('modals/users/'+req.query.modal, data);
   }
 );
 

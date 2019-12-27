@@ -39,7 +39,10 @@ exports.signup = async (req, res, next) => {
             role
         });
 
-        let data={};
+        let data={
+            view: role+'s'
+        };
+        
         data[role+'s'] = users;
 
         res.status(200).render(role+'s', data);
@@ -166,6 +169,16 @@ exports.getUser = async (req, res, next) => {
     }
 }
 
+exports.getUser = async (userId) => {
+    try {
+        const user = await User.findById(userId);
+        if (!user) return next(new Error('User does not exist'));
+        return user;
+    } catch (error) {
+        next(error)
+    }
+}
+
 exports.updateUser = async (req, res, next) => {
     try {
         const update = req.body
@@ -190,11 +203,18 @@ exports.updateUser = async (req, res, next) => {
 exports.deleteUser = async (req, res, next) => {
     try {
         const userId = req.params.userId;
-        await User.findByIdAndDelete(userId);
-        res.status(200).json({
-            data: null,
-            message: 'User has been deleted'
+        const deletedUsr = await User.findByIdAndDelete(userId);
+       
+        const users = await User.find({
+            role: deletedUsr.role
         });
+
+        let data={
+            view: deletedUsr.role+'s'
+        };
+        data[deletedUsr.role+'s'] = users;
+
+        res.status(200).render(deletedUsr.role+'s', data);
     } catch (error) {
         next(error)
     }

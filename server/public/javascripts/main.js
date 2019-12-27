@@ -1,5 +1,5 @@
-function handleHeaderAction(obj, modal) {
-    $.get('/' + obj + '/getModal',{ modal }, function (g) {
+function handleHeaderAction(obj, modal, id) {
+    $.get('/' + obj + '/getModal',{ modal, id }, function (g) {
         $('#modal-form').html(g);
         $('#modal-form').modal({
             fadeDuration: 100
