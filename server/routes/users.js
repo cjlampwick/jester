@@ -7,6 +7,8 @@ router.get('/', userController.allowIfLoggedin, userController.grantAccess('read
 
 router.put('/:userId', userController.allowIfLoggedin, userController.grantAccess('updateAny', 'profile'), userController.updateUser);
 
+router.post('/new', userController.allowIfLoggedin, userController.signup);
+
 router.delete('/:userId', userController.allowIfLoggedin, userController.grantAccess('deleteAny', 'profile'), userController.deleteUser);
 
 module.exports = router;

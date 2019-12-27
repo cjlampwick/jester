@@ -1,7 +1,22 @@
 <div class="sidebar-container">
     <div class="sidebar-item<%if (view==="dashboard") { %>-selected<% } %>">
         <a href="/dashboard">
-            <img title="Home" src="/images/home.png">
+            <img title="Dashboard" src="/images/home.png">
+        </a>
+    </div>
+    <div class="sidebar-item<%if (view==="customers") { %>-selected<% } %>">
+        <a href="/customers">
+            <img title="Agents" src="/images/customer.png">
+        </a>
+    </div>
+    <div class="sidebar-item<%if (view==="groups") { %>-selected<% } %>">
+        <a href="/groups">
+            <img title="Groups" src="/images/groups.png">
+        </a>
+    </div>
+    <div class="sidebar-item<%if (view==="agents") { %>-selected<% } %>">
+        <a href="/agents">
+            <img title="Agents" src="/images/agent.png">
         </a>
     </div>
     <div class="sidebar-item<%if (view==="messages") { %>-selected<% } %>">

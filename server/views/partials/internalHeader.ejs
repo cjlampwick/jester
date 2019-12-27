@@ -1,0 +1,13 @@
+<div id="internal-header" class="header-wrapper">
+    <div class="float-left internal-header-title">
+        <%= title %>
+    </div>
+
+    <% for(var i=0; i<data.actions.length; i++) {%>
+    <div onclick="handleHeaderAction('<%= view %>','<%= data.actions[i].modal %>')" 
+         title="<%= data.actions[i].name %>" 
+         class="internal-header-action float-right">
+        <img src="/images/<%= data.actions[i].icon %>.png">
+    </div>
+    <% } %>
+</div>

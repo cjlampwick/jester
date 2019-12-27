@@ -1,0 +1,25 @@
+<div class="card-container">
+
+    <% for(var i=0; i<customers.length; i++) {%>
+    <div class="card-item">
+        <div class="card-header">
+            <div class="card-header-title">
+                <%= customers[i].name %>
+            </div>
+        </div>
+        <div class="card-body-container">
+            Id: <%= customers[i]._id %><br>
+            Email: <%= customers[i].email %><br>
+            Role: <%= customers[i].role %><br>
+        </div>
+        <div class="card-body-actions" id="card-actions-<%=i%>">
+            <div title="Edit" class="card-body-action">
+                <img src="/images/edit.png">
+            </div>
+            <div title="Delete" class="card-body-action">
+                <img src="/images/delete.png">
+            </div>
+        </div>
+    </div>
+    <% } %>
+</div>

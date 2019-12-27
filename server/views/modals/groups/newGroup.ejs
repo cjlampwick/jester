@@ -1,0 +1,36 @@
+<h1>New Group</h1>
+<hr>
+<ul id="internal-modal-form">
+    <li>
+        <label>Name:</label>
+        <input id="newGroupName" type="text" name="name" label="Group Name" />
+    </li>
+    <li>
+        <label>Icon:</label>
+        <input id="newGroupIcon" type="text" name="icon" label="Group Icon" />
+    </li>
+    <li>
+        <div id="newGroupError" class="error-text"></div>
+    </li>
+    <li>
+        <button id="saveNewGroup">Save</button>
+    </li>
+    
+</ul>
+
+<script>
+    $('#saveNewGroup').click(function () {
+        $.post('/groups/add', {
+            name: $('#newGroupName').val(),
+            iconUrl: $('#newGroupIcon').val()
+        }).done(
+            function () {
+                $.modal.close();
+            }
+        ).fail(
+            function (hxr, status, error) {
+                $('#newGroupError').html(error);
+            }
+        );
+    })
+</script>
