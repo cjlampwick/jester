@@ -20,7 +20,7 @@
             <div title="Edit" class="card-body-action">
                 <img src="/images/edit.png">
             </div>
-            <div title="Delete" class="card-body-action">
+            <div title="Delete" class="card-body-action" onclick="handleHeaderAction('<%= view %>', 'deleteGroup', '<%= groups[i]._id %>')">
                 <img src="/images/delete.png">
             </div>
         </div>

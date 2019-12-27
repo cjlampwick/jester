@@ -26,11 +26,16 @@ exports.removeGroup = async (req, res, next) => {
     try {
         const groupId = req.params.groupId;
 
-        await Group.findByIdAndDelete(groupId);
+        const deletedGroup = await Group.findByIdAndDelete(groupId);
 
-        res.status(200).send({
-            message: "Group removed successfully"
-        })
+        const groups = await Group.find({});
+
+        let data={
+            view: 'groups',
+            groups
+        };
+
+        res.status(200).render('groups', data);
     } catch (error) {
         res.status(500).send({
             message: "Could not delete group",

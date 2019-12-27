@@ -1,0 +1,32 @@
+<div>
+    Are you sure you want to delete the group: <b><%= group.name %></b>
+
+    <ul id="internal-modal-form">
+        <li>
+            <div id="deleteGroupError" class="error-text"></div>
+        </li>
+        <li>
+            <button id="deleteGroupYes">Yes</button>
+            <button id="deleteGroupNo">No</button>
+        </li>
+        
+    </ul>
+</div>
+
+<script>
+    $('#deleteGroupYes').click(function () {
+        $.ajax({
+            url: '/groups/<%= group._id %>',
+            type: 'DELETE'
+        }).done(function (view) {
+            $('.index-view').html(view);
+            $.modal.close();
+        }).fail(function (hxr, status, error) {
+            $('#deleteGroupError').html(error);
+        });
+    })
+
+    $('#deleteGroupNo').click(function () {
+        $.modal.close();
+    })
+</script>
