@@ -18,6 +18,40 @@ a {
 
 .header-wrapper{
   width: 100%;
+  position: relative;
+}
+
+.header-dropdown a{
+  text-decoration: none;
+  color: #777;
+}
+
+.header-dropdown{
+  width: 100px;
+  background: white;
+  border: #CCC 1px solid;
+  border-radius: 7px;
+  padding: 5px;
+  position: absolute;
+  display: none;
+  margin-left: -73px;
+  margin-top: -12px;
+  color: #777;
+}
+
+.header-dropdown ul{
+  padding: 0px;
+  margin: 0px;
+}
+
+.header-dropdown li:hover{
+  background: #EEE;
+}
+
+.header-dropdown li{
+  display: flex;
+  padding-left: 5px;
+  cursor: pointer;
 }
 
 .float-right{
