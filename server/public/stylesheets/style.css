@@ -118,6 +118,7 @@ a {
   margin-left: -73px;
   margin-top: -12px;
   color: #777;
+  z-index: 99999;
 }
 
 .header-dropdown ul{
