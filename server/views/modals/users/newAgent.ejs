@@ -30,7 +30,8 @@
             password: $('#newAgentPassword').val(),
             role: 'agent',
         }).done(
-            function () {
+            function (view) {
+                $('.index-view').html(view);
                 $.modal.close();
             }
         ).fail(

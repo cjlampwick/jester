@@ -27,11 +27,23 @@ exports.signup = async (req, res, next) => {
             expiresIn: "1d"
         });
         newUser.accessToken = accessToken;
+        
         await newUser.save();
-        res.json({
-            data: newUser,
-            accessToken
-        })
+        
+        // res.json({
+        //     data: newUser,
+        //     accessToken
+        // })
+
+        const users = await User.find({
+            role
+        });
+
+        let data={};
+        data[role+'s'] = users;
+
+        res.status(200).render(role+'s', data);
+
     } catch (error) {
         next(error)
     }

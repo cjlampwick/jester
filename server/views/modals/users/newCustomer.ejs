@@ -30,7 +30,8 @@
             password: $('#newCustomerPassword').val(),
             role: 'customer',
         }).done(
-            function () {
+            function (view) {
+                $('.index-view').html(view);
                 $.modal.close();
             }
         ).fail(

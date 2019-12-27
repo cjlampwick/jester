@@ -11,9 +11,12 @@ exports.newGroup = async (req, res, next) => {
 
         await newGroup.save();
 
-        res.json({
-            data: newGroup
-        })
+        const groups = await Group.find({});
+
+        res.status(200).render('groups', {
+            groups
+        });
+
     } catch (error) {
         next(error)
     }

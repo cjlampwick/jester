@@ -24,7 +24,8 @@
             name: $('#newGroupName').val(),
             iconUrl: $('#newGroupIcon').val()
         }).done(
-            function () {
+            function (view) {
+                $('.index-view').html(view);
                 $.modal.close();
             }
         ).fail(
