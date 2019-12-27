@@ -12,7 +12,7 @@ const User = require('./models/userModel')
 const userRouter = require('./routes/users');
 const loginRouter = require('./routes/login');
 const indexRouter = require('./routes/index');
-// const groupRouter = require('./routes/group');
+const groupRouter = require('./routes/group');
 
 require("dotenv").config({
     path: path.join(__dirname, "../.env")
@@ -57,7 +57,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use('/users', userRouter);
-// app.use('/groups', groupRouter);
+app.use('/groups', groupRouter);
 app.use('/', indexRouter);
 
 app.listen(PORT, () => {

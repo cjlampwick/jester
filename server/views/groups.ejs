@@ -1,6 +1,8 @@
 <div class="card-container">
     <% for(var i=0; i<groups.length; i++) {%>
-    <div class="card-item">
+    <div class="card-item"
+        onmouseout="hideActions('<%= i %>')" 
+        onmouseover="showActions('<%= i %>')" >
         <div class="card-header">
             <div class="card-header-title">
                 <%= groups[i].name %>
@@ -17,10 +19,12 @@
             Members: <%= groups[i].users.length %>
         </div>
         <div class="card-body-actions" id="card-actions-<%=i%>">
-            <div title="Edit" class="card-body-action">
+            <div title="Edit" class="card-body-action card-action-<%=i%>">
                 <img src="/images/edit.png">
             </div>
-            <div title="Delete" class="card-body-action">
+            <div title="Delete" 
+                class="card-body-action card-action-<%=i%>" 
+                onclick="handleHeaderAction('<%= view %>', 'deleteGroup', '<%= groups[i]._id %>')">
                 <img src="/images/delete.png">
             </div>
         </div>

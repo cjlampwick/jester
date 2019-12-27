@@ -1,0 +1,32 @@
+<div>
+    Are you sure you want to delete the <%= user.role %>: <b><%= user.name %></b>
+
+    <ul id="internal-modal-form">
+        <li>
+            <div id="deleteUserError" class="error-text"></div>
+        </li>
+        <li>
+            <button id="deleteUserYes">Yes</button>
+            <button id="deleteUserNo">No</button>
+        </li>
+        
+    </ul>
+</div>
+
+<script>
+    $('#deleteUserYes').click(function () {
+        $.ajax({
+            url: '/users/<%= user._id %>',
+            type: 'DELETE'
+        }).done(function (view) {
+            $('.index-view').html(view);
+            $.modal.close();
+        }).fail(function (hxr, status, error) {
+            $('#deleteUserError').html(error);
+        });
+    })
+
+    $('#deleteUserNo').click(function () {
+        $.modal.close();
+    })
+</script>
